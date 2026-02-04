@@ -1,4 +1,4 @@
-use crate::components::counter_btn::{Button, InputForm};
+use crate::components::input_form::{Button, InputForm};
 use leptos::prelude::*;
 
 /// Default Home Page
