@@ -1,6 +1,5 @@
 use leptos::prelude::*;
 
-/// A parameterized incrementing button
 #[component]
 pub fn InputForm() -> impl IntoView {
     let (count, set_count) = signal(0);
