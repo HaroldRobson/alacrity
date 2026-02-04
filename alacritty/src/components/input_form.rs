@@ -9,17 +9,12 @@ pub fn InputForm() -> impl IntoView {
 
     view! {
             <input type="text"
-                // adding :target gives us typed access to the element
-                // that is the target of the event that fires
                 on:input:target=move |ev| {
                     let num_as_str = ev.target().value();
                     let num: i32 = num_as_str.parse::<i32>().unwrap_or(0);
-                    // .value() returns the current value of an HTML input element
                     set_count.set(num);
                 }
 
-                // the `prop:` syntax lets you update a DOM property,
-                // rather than an attribute.
                 prop:value=count
             />
     <button on:click=move |_| {
@@ -73,19 +68,5 @@ impl GetFactors<i32> for i32 {
             }
         }
         factors
-    }
-}
-
-/// A parameterized incrementing button
-#[component]
-pub fn Button(#[prop(default = 1)] increment: i32) -> impl IntoView {
-    let (count, set_count) = signal(0);
-    view! {
-        <button on:click=move |_| {
-            set_count.set(count.get() + increment)
-        }>
-
-            "Click me: " {count}
-        </button>
     }
 }
