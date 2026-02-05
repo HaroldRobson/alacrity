@@ -38,6 +38,7 @@ where
     T: GetFactors<T>,
 {
     fn primes(&self) -> Vec<T>;
+    fn primes_in_range(&self, min: i32) -> Vec<i32>;
 }
 
 impl GetPrimes<i32> for i32 {
@@ -51,6 +52,15 @@ impl GetPrimes<i32> for i32 {
         }
         primes
     }
+fn primes_in_range(&self, min: i32) -> Vec<i32> {
+    let mut primes: Vec<i32> = vec![];
+    for i in min..self+1 {
+        if i.factors().len() == 2 {
+            primes.push(i);
+    }
+        primes
+    }
+}
 }
 
 trait GetFactors<T> {
